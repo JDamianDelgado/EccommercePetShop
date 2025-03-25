@@ -2,8 +2,10 @@ import { NavBar } from "./Components/NavBar";
 import { Footer } from "./Components/Footer";
 import { Home } from "./Views/Home";
 import { Productos } from "./Views/Products";
-import { Login } from "./Views/Login";
+import LoginForm from "./Components/Auth/LoginForm";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
@@ -13,10 +15,11 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/Home" element={<Home />}></Route>
-          <Route path="/Login" element={<Login />}></Route>
+          <Route path="/login" element={<LoginForm />}></Route>
           <Route path="/Productos" element={<Productos />}></Route>
         </Routes>
         <Footer></Footer>
+        <ToastContainer />
       </div>
     </>
   );
