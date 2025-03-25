@@ -1,9 +1,10 @@
 .navbar {
-  background-color: #1a202c;
-  padding: 0.5rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  background-color: #2c5282;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .navbar-container {
@@ -81,6 +82,59 @@
 .auth-links {
   display: flex;
   gap: 1rem;
+}
+
+.nav-brand a {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #90cdf4;
+}
+
+.cart-link {
+  position: relative;
+  padding: 0.5rem 1rem;
+  background-color: #4299e1;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cart-link:hover {
+  background-color: #3182ce;
+}
+
+.nav-links button {
+  padding: 0.5rem 1rem;
+  background-color: #f56565;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.nav-links button:hover {
+  background-color: #e53e3e;
 }
 
 @media (min-width: 640px) {

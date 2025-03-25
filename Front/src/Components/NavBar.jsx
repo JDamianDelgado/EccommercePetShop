@@ -1,54 +1,34 @@
-import { Link } from "react-router-dom";
-import '../Styles/Navbar.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../Context/ReactContext';
+import '../Styles/NavBar.css';
 
 export const NavBar = () => {
+  const { currentUser, logoutUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
   return (
     <nav className="navbar">
-      <div className="navbar-container">
-        <div className="navbar-content">
-          <div className="navbar-left">
-            <div className="navbar-logo">
-              <img
-                className="logo-img"
-                src="/logo.png"
-                alt="PetShop"
-              />
-            </div>
-            <div className="navbar-links">
-              <div className="nav-links-group">
-                <Link
-                  to="/Home"
-                  className="nav-link"
-                >
-                  Home
-                </Link>
-                <Link
-                  to="/Productos"
-                  className="nav-link"
-                >
-                  Productos
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="navbar-right">
-            <div className="auth-links">
-              <Link
-                to="/login"
-                className="nav-link"
-              >
-                Iniciar sesión
-              </Link>
-              <Link
-                to="/login"
-                state={{ showRegister: true }}
-                className="nav-link-primary"
-              >
-                Registrarse
-              </Link>
-            </div>
-          </div>
-        </div>
+      <div className="nav-brand">
+        <Link to="/">PetShop</Link>
+      </div>
+      <div className="nav-links">
+        <Link to="/">Inicio</Link>
+        <Link to="/product/seeder">Productos</Link>
+        {currentUser ? (
+          <>
+            <Link to="/profile">Mi Perfil</Link>
+            <Link to="/cart" className="cart-link">
+              🛒 Carrito
+            </Link>
+            <button onClick={logoutUser}>Cerrar Sesión</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">Iniciar Sesión</Link>
+            <Link to="/register">Registrarse</Link>
+          </>
+        )}
       </div>
     </nav>
   );

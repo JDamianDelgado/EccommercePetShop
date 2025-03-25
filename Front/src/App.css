@@ -1,0 +1,25 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  background-color: #f7fafc;
+}
+
+/* Toast notifications */
+.Toastify__toast {
+  border-radius: 8px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.Toastify__toast--success {
+  background-color: #48bb78;
+}
+
+.Toastify__toast--error {
+  background-color: #f56565;
+}
