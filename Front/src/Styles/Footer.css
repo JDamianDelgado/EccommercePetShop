@@ -1,0 +1,116 @@
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-xl) 0 0;
+    margin-top: auto;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-md);
+    
+}
+
+.footer-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-section h3 {
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.2rem;
+}
+
+.footer-section.contact p {
+    margin: var(--spacing-sm) 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.footer-section.links ul {
+    list-style: none;
+}
+
+.footer-section.links a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: var(--spacing-xs) 0;
+    transition: color 0.3s ease;
+}
+
+.footer-section.links a:hover {
+    color: var(--accent-color);
+}
+
+.footer-section.social a {
+    color: white;
+    text-decoration: none;
+    margin-right: var(--spacing-md);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-section.social a:hover {
+    color: var(--accent-color);
+}
+
+.footer-section.newsletter form {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.footer-section.newsletter input {
+    padding: var(--spacing-sm);
+    border: none;
+    border-radius: 4px;
+    flex: 1;
+}
+
+.footer-section.newsletter button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.footer-section.newsletter button:hover {
+    background-color: #c41414;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Media queries para responsive */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-section.newsletter form {
+        flex-direction: column;
+    }
+
+    .footer-section.social a {
+        margin-right: var(--spacing-sm);
+        font-size: 1.2rem;
+    }
+}

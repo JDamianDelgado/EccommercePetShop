@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const UserContext = createContext({
   currentUser: null,
   loginUser: async () => {},

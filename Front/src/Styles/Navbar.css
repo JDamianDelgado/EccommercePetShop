@@ -1,0 +1,49 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbarItem {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.navbarItem:hover {
+    background-color: #e9ecef;
+    color: #000;
+}
+
+/* Media queries para responsive */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+
+    .navbarItem {
+        margin: 0.5rem;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.3rem;
+    }
+
+    .navbarItem {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
