@@ -11,6 +11,7 @@ export const Profile = () => {
 
   const user = JSON.parse(localStorage.getItem('user'));
 
+  console.log(user);
   useEffect(() => {
     if (!user) {
       navigate('/login');
@@ -28,11 +29,13 @@ export const Profile = () => {
       }
     };
 
-    fetchOrders();
+    // fetchOrders();
   }, [user, navigate]);
 
   if (loading) {
-    return <div className="profile-container">Cargando...</div>;
+    setTimeout(() => {
+      return <div className="profile-container">Cargando...</div>;
+    }, 1000);
   }
 
   if (error) {
@@ -40,6 +43,7 @@ export const Profile = () => {
   }
 
   return (
+    
     <div className="profile-container">
       <div className="profile-header">
         <h2>Mi Perfil</h2>

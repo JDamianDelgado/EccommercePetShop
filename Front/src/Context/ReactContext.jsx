@@ -1,23 +1,22 @@
 import { createContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../config/axios";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const UserContext = createContext({
   currentUser: null,
   loginUser: async () => {},
-  logoutUser: () => {},
+  logoutUser: async () => {},
 });
 
 export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
 
-  // Cargar usuario desde localStorage al iniciar
   useEffect(() => {
     const userStr = localStorage.getItem('user');
-    if (userStr) {
+    if (userStr && userStr !== 'undefined') {
       try {
         const userData = JSON.parse(userStr);
         setCurrentUser(userData);
@@ -31,31 +30,49 @@ export const UserProvider = ({ children }) => {
 
   const loginUser = async (data) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/auth/signin",
-        data
-      );
-      if (response.status === 200) {
-        const userData = response.data;
-        setCurrentUser(userData.user);
-        localStorage.setItem('token', userData.token);
-        localStorage.setItem('user', JSON.stringify(userData.user));
-        navigate('/product/sedder');
+      const response = await axiosInstance.post("/auth/signin", data);
+      console.log(response.data);
+      if (response) {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user)); 
+        setCurrentUser(response.data.user);
         return true;
       }
       return false;
     } catch (error) {
-      console.error('Error de login:', error);
-      alert(error.response?.data?.message || 'Error al iniciar sesión');
-      return false;
+      console.error("Error en login:", error.response?.data?.message || error);
+      return false; 
     }
   };
+  
+
+
+
+  //   try {
+  //     const response = await axiosInstance.post(
+  //       "http://localhost:3000/auth/signin",
+  //       data
+  //     );
+  //     if (response.status === 200) {
+  //       const userData = response.data;
+  //       setCurrentUser(userData);
+  //       localStorage.setItem('token', userData.token);
+  //       localStorage.setItem('user', JSON.stringify(userData.user));
+  //       return true;
+  //     }
+  //     return false;
+  //   } catch (error) {
+  //     console.error('Error de login:', error);
+  //     alert(error.response?.data?.message || 'Error al iniciar sesión');
+  //     return false;
+  //   }
+  // };
 
   const logoutUser = () => {
     setCurrentUser(null);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/');
   };
 
   return (
@@ -68,3 +85,5 @@ export const UserProvider = ({ children }) => {
 UserProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+

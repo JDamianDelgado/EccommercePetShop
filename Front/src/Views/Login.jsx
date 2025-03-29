@@ -1,15 +1,20 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../config/axios';
+import { ToastContainer, toast } from 'react-toastify';
 import '../Styles/Auth.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { UserContext } from '../Context/ReactContext';
+import { useContext } from 'react';
+
 
 export const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { loginUser } = useContext(UserContext);
 
   const handleChange = (e) => {
     setFormData({
@@ -21,12 +26,18 @@ export const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axiosInstance.post('/auth/signin', formData);
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
-      navigate('/');
-    } catch (err) {
-      setError(err.response?.data?.message || 'Error al iniciar sesión');
+      const loginSuccess = await loginUser(formData);
+      if (loginSuccess) {
+        toast.success("Inicio de sesión exitoso");
+        setTimeout(() => {
+          navigate("/profile");
+        }, 1500);
+      } else {
+        toast.error("Credenciales incorrectas");
+      }
+    } catch (error) {
+      console.error("Error en el login:", error.response?.data?.message || error);
+      toast.error("No se pudo iniciar sesión");
     }
   };
 
@@ -34,7 +45,6 @@ export const Login = () => {
     <div className="auth-container">
       <div className="auth-card">
         <h2>Iniciar Sesión</h2>
-        {error && <div className="auth-error">{error}</div>}
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
             <label htmlFor="email">Email</label>

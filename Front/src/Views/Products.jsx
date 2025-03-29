@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../config/axios';
 import '../Styles/Products.css';
-import axios from "axios";
+import { toast } from "react-toastify";
 
 export const Productos = () => {
   const [productos, setProductos] = useState([]);
@@ -15,11 +15,10 @@ export const Productos = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        await axios.get('/product/seeder');
-        // FALTA IMPLEMENTAR EL ACIOSINSTANCE
         const response = await axiosInstance.get('/product');
         setProductos(response.data);
       } catch (err) {
+        toast.error('Error al cargar los productos');
         console.error('Error:', err.response?.data?.message || err.message);
         setError(err.response?.data?.message || 'Error al cargar los productos');
       } finally {
@@ -37,11 +36,11 @@ export const Productos = () => {
     }
 
     try {
-      await axiosInstance.post('/cart/add', { productId });
-      alert('Producto agregado al carrito');
+      await axiosInstance.post('/cart/add', { orderId, productId, quantity: 1 });
+      toast.success('Producto agregado al carrito');
     } catch (err) {
       console.error('Error:', err.response?.data?.message || err.message);
-      alert('Error al agregar al carrito');
+      toast.error('Error al agregar al carrito');
     }
   };
 

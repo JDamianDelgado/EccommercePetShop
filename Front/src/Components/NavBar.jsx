@@ -4,9 +4,8 @@ import { UserContext } from '../Context/ReactContext';
 import '../Styles/NavBar.css';
 
 export const NavBar = () => {
-  const { currentUser, logoutUser } = useContext(UserContext);
-  const navigate = useNavigate();
-
+  const { currentUser, logoutUser} = useContext(UserContext);
+console.log('currentUser en NavBar', currentUser);
   return (
     <nav className="navbar">
       <div className="nav-brand">
@@ -17,12 +16,12 @@ export const NavBar = () => {
         <Link to="/product/seeder">Productos</Link>
         {currentUser ? (
           <>
-            <Link to="/profile">Mi Perfil</Link>
-            <Link to="/cart" className="cart-link">
-              🛒 Carrito
-            </Link>
-            <button onClick={logoutUser}>Cerrar Sesión</button>
-          </>
+          <Link to="/profile">Mi Perfil</Link>
+          <Link to="/cart" className="cart-link">
+            🛒 Carrito
+          </Link>
+          <button onClick={logoutUser}>Cerrar Sesión</button>
+        </>
         ) : (
           <>
             <Link to="/login">Iniciar Sesión</Link>
