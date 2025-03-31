@@ -36,7 +36,7 @@ export const Productos = () => {
     }
 
     try {
-      await axiosInstance.post('/cart/add', { orderId, productId, quantity: 1 });
+      await axiosInstance.put(`/orders/${user.IdUser}/addCart`, { productId, quantity: 1 });
       toast.success('Producto agregado al carrito');
     } catch (err) {
       console.error('Error:', err.response?.data?.message || err.message);

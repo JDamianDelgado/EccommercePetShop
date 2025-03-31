@@ -9,7 +9,6 @@ export const Cart = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Obtener el usuario del localStorage
   const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
@@ -19,13 +18,22 @@ export const Cart = () => {
       return;
     }
 
-    loadCart();
+    loadCart(); 
   }, []);
 
   const loadCart = async () => {
     try {
       const response = await axiosInstance.get(`/orders/cart/${user.IdUser}`);
-      setCart(response.data);
+      const cartItems = response.data;
+      const total = cartItems.reduce((sum, item) => 
+        sum + (item.product.price * item.quantity), 0);
+      
+      setCart({
+        cartItem: cartItems,
+        total: total
+      });
+      console.log("Respuesta original:", response.data);
+      console.log("Carrito formateado:", { cartItem: cartItems, total });
     } catch (err) {
       setError(err.response?.data?.message || 'Error al cargar el carrito');
       console.error('Error:', err);
@@ -36,10 +44,11 @@ export const Cart = () => {
 
   const removeFromCart = async (productId) => {
     try {
-      await axiosInstance.delete('/orders/cart/remove', {
+      await axiosInstance.delete(`/orders/cart/${carrito.cartItem.idCartItem}`, {
         data: { orderId: cart.IdOrder, productId },
       });
       await loadCart();
+      toast.success('Producto eliminado del carrito');
     } catch (err) {
       setError(err.response?.data?.message || 'Error al eliminar el producto');
       console.error('Error:', err);
@@ -53,10 +62,9 @@ export const Cart = () => {
     }
 
     try {
-      await axiosInstance.post('/orders/cart/add', {
-        orderId: cart.IdOrder,
-        productId,
-        quantity,
+      await axiosInstance.put(`/orders/cart/${user.IdUser}/addCart`, {
+        productId,  
+        quantity,       
       });
       await loadCart();
     } catch (err) {
@@ -67,7 +75,7 @@ export const Cart = () => {
 
   const checkout = async () => {
     try {
-      await axiosInstance.post(`/orders/cart/checkout/${cart.IdOrder}`);
+      await axiosInstance.post(`/orders/${user.IdUser}`);
       setCart(null);
       navigate('/orders/success');
     } catch (err) {
@@ -103,7 +111,7 @@ export const Cart = () => {
     );
   }
 
-  if (!cart || !cart.products || cart.products.length === 0) {
+  if (!cart || !cart.cartItem || cart.cartItem.length <= 0) {
     return (
       <div className="cart-container">
         <p className="cart-empty">Tu carrito está vacío</p>
@@ -118,40 +126,40 @@ export const Cart = () => {
     <div className="cart-container">
       <h2>Tu Carrito</h2>
       <div className="cart-items">
-        {cart.products.map((product) => (
-          <div key={product.IdProduct} className="cart-item">
+        {cart.cartItem.map((item) => (
+          <div key={item.idCartItem} className="cart-item">
             <img
               className="cart-item-image"
-              src={product.image}
-              alt={product.name}
+              src={item.product.image}
+              alt={item.product.name}
             />
             <div className="cart-item-details">
-              <h3>{product.name}</h3>
+              <h3>{item.product.name}</h3>
               <p className="cart-item-price">
-                Precio: ${(product.price * product.quantity).toFixed(2)}
+                Precio: ${(item.product.price * item.quantity).toFixed(2)}
               </p>
               <div className="cart-item-quantity">
                 <button
                   onClick={() =>
-                    updateQuantity(product.IdProduct, product.quantity - 1)
+                    updateQuantity(item.product.IdProduct, item.quantity - 1)
                   }
-                  disabled={product.quantity <= 1}
+                  disabled={item.quantity <= 1}
                 >
                   -
                 </button>
-                <span>{product.quantity}</span>
+                <span>{item.quantity}</span>
                 <button
                   onClick={() =>
-                    updateQuantity(product.IdProduct, product.quantity + 1)
+                    updateQuantity(item.product.IdProduct, item.quantity + 1)
                   }
-                  disabled={product.quantity >= product.stock}
+                  disabled={item.quantity >= item.product.stock}
                 >
                   +
                 </button>
               </div>
               <button
                 className="remove-item"
-                onClick={() => removeFromCart(product.IdProduct)}
+                onClick={() => removeFromCart(item.product.IdProduct)}
               >
                 Eliminar
               </button>
