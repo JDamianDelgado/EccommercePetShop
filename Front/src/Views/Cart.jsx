@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../config/axios';
 import '../Styles/Cart.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Cart = () => {
   const [cart, setCart] = useState(null);
@@ -32,8 +34,6 @@ export const Cart = () => {
         cartItem: cartItems,
         total: total
       });
-      console.log("Respuesta original:", response.data);
-      console.log("Carrito formateado:", { cartItem: cartItems, total });
     } catch (err) {
       setError(err.response?.data?.message || 'Error al cargar el carrito');
       console.error('Error:', err);
@@ -42,28 +42,29 @@ export const Cart = () => {
     }
   };
 
-  const removeFromCart = async (productId) => {
+  const removeFromCart = async (idCartItem) => {
+
     try {
-      await axiosInstance.delete(`/orders/cart/${carrito.cartItem.idCartItem}`, {
-        data: { orderId: cart.IdOrder, productId },
-      });
-      await loadCart();
+      await axiosInstance.delete(`/orders/cart/${user.IdUser}/${idCartItem}`);
+  
+      await loadCart(); 
       toast.success('Producto eliminado del carrito');
     } catch (err) {
-      setError(err.response?.data?.message || 'Error al eliminar el producto');
-      console.error('Error:', err);
+      console.error('Error:', err.response?.data?.message || err.message);
+      toast.error(err.response?.data?.message || 'Error al eliminar el producto');
     }
   };
 
-  const updateQuantity = async (productId, quantity) => {
+  const updateQuantity = async (idCartItem, quantity) => {
+    console.log('Actualizando cantidad para el producto:', idCartItem, 'Cantidad:', quantity);
     if (quantity < 1) {
-      await removeFromCart(productId);
+      await removeFromCart(idCartItem);
       return;
     }
 
     try {
-      await axiosInstance.put(`/orders/cart/${user.IdUser}/addCart`, {
-        productId,  
+      console.log('Actualizando cantidad para el producto:', idCartItem, 'Cantidad:', quantity);
+      await axiosInstance.patch(`/orders/cart/${user.IdUser}/${idCartItem}`, {
         quantity,       
       });
       await loadCart();
@@ -75,9 +76,18 @@ export const Cart = () => {
 
   const checkout = async () => {
     try {
-      await axiosInstance.post(`/orders/${user.IdUser}`);
-      setCart(null);
-      navigate('/orders/success');
+      const response = await axiosInstance.post(`/orders/${user.IdUser}`);
+      
+      console.log('CARRITO:', response.data.carrito);
+      navigate('/compra', { 
+        state: { 
+          orderDetails: response.data.orderDetail.products, 
+          totalPrice: response.data.orderDetail.totalPrice,
+         carrito: response.data.carrito
+        } 
+      });
+  
+      toast.success('Compra realizada con éxito');
     } catch (err) {
       setError(err.response?.data?.message || 'Error al procesar la compra');
       console.error('Error:', err);
@@ -115,7 +125,7 @@ export const Cart = () => {
     return (
       <div className="cart-container">
         <p className="cart-empty">Tu carrito está vacío</p>
-        <button onClick={() => navigate('/')} className="continue-shopping">
+        <button onClick={() => navigate('/product/seeder')} className="continue-shopping">
           Seguir Comprando
         </button>
       </div>
@@ -141,7 +151,7 @@ export const Cart = () => {
               <div className="cart-item-quantity">
                 <button
                   onClick={() =>
-                    updateQuantity(item.product.IdProduct, item.quantity - 1)
+                    updateQuantity(item.idCartItem, item.quantity - 1)
                   }
                   disabled={item.quantity <= 1}
                 >
@@ -150,7 +160,7 @@ export const Cart = () => {
                 <span>{item.quantity}</span>
                 <button
                   onClick={() =>
-                    updateQuantity(item.product.IdProduct, item.quantity + 1)
+                    updateQuantity(item.idCartItem, item.quantity + 1)
                   }
                   disabled={item.quantity >= item.product.stock}
                 >
@@ -159,7 +169,7 @@ export const Cart = () => {
               </div>
               <button
                 className="remove-item"
-                onClick={() => removeFromCart(item.product.IdProduct)}
+                onClick={() => removeFromCart(item.idCartItem)}
               >
                 Eliminar
               </button>
@@ -170,9 +180,10 @@ export const Cart = () => {
       <div className="cart-summary">
         <p className="cart-total">Total: ${cart.total.toFixed(2)}</p>
         <button className="checkout-button" onClick={checkout}>
-          Finalizar Compra
-        </button>
-        <button className="continue-shopping" onClick={() => navigate('/')}>
+  Finalizar Compra
+</button>
+
+        <button className="continue-shopping" onClick={() => navigate('/product/seeder')}>
           Seguir Comprando
         </button>
       </div>

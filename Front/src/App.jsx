@@ -7,6 +7,7 @@ import { Cart } from './Views/Cart';
 import { Login } from './Views/Login';
 import { Register } from './Views/Register';
 import { Profile } from './Views/Profile';
+import { Compra } from './Views/Compra';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -17,6 +18,7 @@ function App() {
       <NavBar />
       <main className="main-content">
         <Routes>
+          <Route path="/Compra" element={<Compra />} />
           <Route path="/" element={<Home />} />
           <Route path="/product/seeder" element={<Productos />} />
           <Route path="/cart" element={<Cart />} />
