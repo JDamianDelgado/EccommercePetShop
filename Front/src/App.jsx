@@ -11,13 +11,17 @@ import { Compra } from './Views/Compra';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+import { Usuarios } from './Views/Admin/Usuarios';
+import { ProductosAdmin } from './Views/Admin/Productos';
 
 function App() {
   return (
     <div className="app">
-      <NavBar />
+      <NavBar></NavBar>
       <main className="main-content">
         <Routes>
+          <Route path="/admin/products" element={<ProductosAdmin />} />
+          <Route path="/admin/users" element={<Usuarios />} />
           <Route path="/Compra" element={<Compra />} />
           <Route path="/" element={<Home />} />
           <Route path="/product/seeder" element={<Productos />} />

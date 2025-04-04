@@ -44,29 +44,6 @@ export const UserProvider = ({ children }) => {
       return false; 
     }
   };
-  
-
-
-
-  //   try {
-  //     const response = await axiosInstance.post(
-  //       "http://localhost:3000/auth/signin",
-  //       data
-  //     );
-  //     if (response.status === 200) {
-  //       const userData = response.data;
-  //       setCurrentUser(userData);
-  //       localStorage.setItem('token', userData.token);
-  //       localStorage.setItem('user', JSON.stringify(userData.user));
-  //       return true;
-  //     }
-  //     return false;
-  //   } catch (error) {
-  //     console.error('Error de login:', error);
-  //     alert(error.response?.data?.message || 'Error al iniciar sesión');
-  //     return false;
-  //   }
-  // };
 
   const logoutUser = () => {
     setCurrentUser(null);
