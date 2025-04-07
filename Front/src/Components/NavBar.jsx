@@ -19,8 +19,8 @@ export const NavBar = () => {
         {currentUser ? (
           currentUser.Range ? (
             <>
-              <Link to="/admin/dashboard">Dashboard</Link>
-              <Link to="/admin/products">Administrar Productos</Link>
+              <Link to="/admin/pedidos">Pedidos</Link>
+              <Link to="/admin/products">Productos</Link>
               <Link to="/admin/users">Usuarios</Link>
               <button onClick={logoutUser}>Cerrar Sesión</button>
             </>

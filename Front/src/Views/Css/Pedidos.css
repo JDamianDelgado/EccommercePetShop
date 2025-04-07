@@ -1,0 +1,100 @@
+.pedidos-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .subtitle{
+    font-weight: bold;
+    color: #444;
+  }
+  .no-orders {
+    text-align: center;
+    color: #999;
+    font-size: 1.2rem;
+  }
+  
+  .order-card {
+    border: 1px solid #3c29e9;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #e2e2e2;
+    transition: all 0.3s ease;
+  }
+  
+  .order-card:hover {
+    background-color: #c0c0c0;
+  }
+  
+  .products-title {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .product-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    background-color: #fdfdfd;
+  }
+  
+  .no-products {
+    color: #e74c3c;
+    margin-top: 10px;
+  }
+  
+  .btn-delete{
+    background-color: #e74c3c;
+    color: white;
+padding: 1rem;
+border-radius: 4px;
+border: none;
+cursor: pointer;
+margin: .5rem;
+cursor: pointer;
+width: 100%;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.btn-cancel{
+  background-color: #3498db;
+  color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  margin: .5rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-cancel:hover {
+  background-color: #2980b9;
+}
+
+.delete-confirm{
+    position: fixed;
+    border: 1px solid black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+    box-shadow: 20px 20px 25px rgba(15, 4, 4, 0.2);
+}

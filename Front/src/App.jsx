@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import { Usuarios } from './Views/Admin/Usuarios';
 import { ProductosAdmin } from './Views/Admin/Productos';
+import { PedidosAdmin } from './Views/Admin/Pedidos';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <NavBar></NavBar>
       <main className="main-content">
         <Routes>
+          <Route path="/admin/pedidos" element={<PedidosAdmin />} />
           <Route path="/admin/products" element={<ProductosAdmin />} />
           <Route path="/admin/users" element={<Usuarios />} />
           <Route path="/Compra" element={<Compra />} />
