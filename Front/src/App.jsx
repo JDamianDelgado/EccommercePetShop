@@ -34,7 +34,14 @@ function App() {
         </Routes>
       </main>
       <Footer />
-      <ToastContainer />
+      <ToastContainer 
+         position="top-center"
+         toastClassName="custom-toast"
+         autoClose={500}
+         closeOnClick
+         theme= 'colored'
+         hideProgressBar={true}
+         />
     </div>
   );
 }

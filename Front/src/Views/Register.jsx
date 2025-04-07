@@ -21,12 +21,6 @@ export const Register = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     
-    // Validar que el teléfono solo contenga números si se ingresa
-    if (name === 'phone' && value && !/^[0-9]*$/.test(value)) {
-      setError('El teléfono solo debe contener números');
-      return;
-    }
-
     setFormData({
       ...formData,
       [name]: value,
@@ -36,17 +30,19 @@ export const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
     if (formData.password !== formData.confirmPassword) {
       setError('Las contraseñas no coinciden');
       return;
     }
-
+  
     try {
       const { confirmPassword, ...registerData } = formData;
-      // Si el teléfono está vacío, enviar null
-      if (!registerData.phone) {
-        registerData.phone = null;
-      }
+  
+      registerData.phone = registerData.phone
+        ? Number(registerData.phone)
+        : null;
+  
       await axiosInstance.post('/auth/signup', registerData);
       navigate('/login');
     } catch (err) {
@@ -129,7 +125,7 @@ export const Register = () => {
           <div className="form-group">
             <label htmlFor="phone">Teléfono (opcional)</label>
             <input
-              type="tel"
+              type="number"
               id="phone"
               name="phone"
               value={formData.phone}
