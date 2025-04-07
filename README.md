@@ -30,6 +30,17 @@ Este proyecto es un **eCommerce PetShop** que permite a los usuarios comprar pro
 
 ## Estado del Proyecto
 
-Este proyecto está actualmente **en proceso**. Las funcionalidades principales están siendo implementadas, y el objetivo es tener una plataforma funcional para los usuarios y administradores en el futuro cercano. 
+Este proyecto se encuentra actualmente en desarrollo activo.
+Las funcionalidades principales están habilitadas y disponibles para su evaluación.
+
+Para visualizar la interfaz de Administrador, podés utilizar las siguientes credenciales de ejemplo:
+
+Usuario: Admin@mail.com
+
+Contraseña: Admin123
+
+
+
+
 
 
