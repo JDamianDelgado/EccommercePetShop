@@ -51,24 +51,29 @@ export const Home = () => {
       </div>
 
       <div className="boxText">
-        <h1 className="title">¿Quiénes somos?</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum explicabo asperiores dolorem illum praesentium dignissimos. Perferendis sit assumenda eos reprehenderit nulla veniam eligendi asperiores excepturi repudiandae, hic optio quo magnam!
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, nulla. Itaque aperiam consequuntur, commodi ipsa eius quae, adipisci ipsam, distinctio id dolorem asperiores sint corrupti temporibus. Nam aliquid ipsa tenetur.
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi corporis ipsum aperiam laborum recusandae corrupti magnam natus odio vitae. Mollitia explicabo quasi rem ad molestiae ipsam odit architecto sunt fugit?
-        </p>
+        <h1 className="title">¿Quiénes somos? 🐶🐱</h1>
+        <p>¡Hola! Somos 🐾 una petshop de Buenos Aires creada por amantes de los animales para amantes de los animales.
 
-        <h2 className="title">¿Dónde nos encontramos?</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum explicabo asperiores dolorem illum praesentium dignissimos. Perferendis sit assumenda eos reprehenderit nulla veniam eligendi asperiores excepturi repudiandae, hic optio quo magnam!
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Id hic iusto, unde laborum, voluptas deserunt optio vel, eaque rerum quidem necessitatibus culpa nobis enim obcaecati praesentium nihil magnam ducimus est!
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum recusandae soluta ad quo quasi ex, ipsum sed quaerat exercitationem modi labore sapiente impedit, deserunt laudantium tempora vero iure quas consequuntur?
-        </p>
+En pocas palabras... ¡vivimos rodeados de pelos, patitas y mucho amor! 
+<br />❤️ Nos encanta ver a las mascotas felices y por eso trabajamos todos los días para que no les falte nada: comida rica 🍖, juguetes divertidos 🎾, accesorios con onda 😎 y todo lo que necesiten para estar sanos y llenos de energía.
+
+<br />Sabemos que tu mascota no es "una más", es familia. Por eso aquí te vas a sentir como en casa — o mejor dicho, ¡como en una casa llena de huellitas y colitas felices! 🐕🐈
+
+<br />¿Buscás lo mejor para tu mejor amigo? Acá lo tenemos. Y si no lo tenemos… ¡lo conseguimos! 😉
+
+<br />Porque en Petshop no solo vendemos cosas… creamos momentos, anécdotas y miles de historias para contar. 🐾</p>
 
         <h2 className="title">Nuestros servicios</h2>
+        <p>En Petshop tenemos todo lo que necesita tu mascota… y un poquito más 😉</p>
         <ol>
-          <li>Opción 1</li>
-          <li>Opción 2</li>
-          <li>Opción 3</li>
-          <li>Opción 4</li>
+          <li>Alimentación 🥩🍖</li>
+          <p>Para los que aman comer (o mejor dicho… ¡devorar!). Alimentos balanceados, snacks, golosinas y hasta premios para cuando se portan bien… o solo porque los amás demasiado.</p>
+          <li>Juguetes y Accesorios 🎾🦴</li>
+          <p>¡Acá la diversión no falta! Juguetes para morder, correr, atrapar o simplemente destruir en 5 minutos (sabemos cómo son 😅). Además, correas, camitas, platitos y un montón de cosas lindas para que tu mascota sea la más facha del barrio 😎.</p>
+          <li>Salud y Cuidado 🧼🐕‍🦺</li>
+          <p>Porque ser bellos también es importante: shampoos, antipulgas, vitaminas y todo para que estén sanos, felices y brillando como estrellas ✨.</p>
+          <li>Amor, mimos y buena onda ❤️</li>
+          <p>Esto viene gratis, ¡siempre! Porque en Petshop no solo vendemos productos... también regalamos sonrisas, consejos y un montón de cariño a todos los peludos (y sus humanos también 🐾).</p>
         </ol>
       </div>
     </div>

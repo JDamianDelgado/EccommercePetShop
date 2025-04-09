@@ -29,7 +29,7 @@ export const NavBar = () => {
               <Link to="/product/seeder">Productos</Link>
               <Link to="/profile">Mi Perfil</Link>
               <Link to="/cart" className="cart-link">🛒 Carrito</Link>
-              <button onClick={logoutUser}>Cerrar Sesión</button>
+              <button onClick={logoutUser} className='CerrarSesion'>Cerrar Sesión</button>
             </>
           )
         ) : (

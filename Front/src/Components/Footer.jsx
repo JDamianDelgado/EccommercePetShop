@@ -16,6 +16,8 @@ export const Footer = () => {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/product/seeder">Productos</Link></li>
+            <li><Link to="/profile">Mi Perfil</Link></li>
+            <li><Link to="/cart">Carrito</Link></li>
           </ul>
         </div>
         <div className="footer-section social">

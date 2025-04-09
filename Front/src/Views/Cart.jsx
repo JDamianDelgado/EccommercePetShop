@@ -77,8 +77,6 @@ export const Cart = () => {
   const checkout = async () => {
     try {
       const response = await axiosInstance.post(`/orders/${user.IdUser}`);
-      console.log('RESPONSE:', response.data);
-      console.log('CARRITO:', response.data.carrito);
       navigate('/compra', { 
         state: { 
           orderDetails: response.data.orderDetail.products, 
