@@ -12,6 +12,7 @@ export const Profile = () => {
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')));
   const [editProfile, setEditProfile] = useState(false);
   const [editUser, setEditUser] = useState({});
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(null);
 
   const handleChange = (field, value) => {
     setEditUser(prev => ({
@@ -49,10 +50,34 @@ export const Profile = () => {
     }
   }
 
+  const eliminarOrden = async (IdOrder)=>{
+    try{
+      await axiosInstance.delete(`orders/${IdOrder}`)
+      toast.success('Orden eliminada exitosamente')
+      loadOrders();
+
+    } catch(error) { console.error('Error al eliminar la order', error)
+      toast.error('Error al eliminar la orden')
+    }
+  }
+
+
   const loadOrders = async () => {
     try {
       const response = await axiosInstance.get(`/orders/myOrders/${user.IdUser}`);
-      setOrders(response.data);
+      
+  
+      const orderedOrders = response.data.sort((a, b) => {
+        const statusPriority = {
+          pending: 1,
+          completed: 2,
+          cancelled: 3
+        };
+      
+        return statusPriority[a.status] - statusPriority[b.status];
+      });
+      
+      setOrders(orderedOrders);
     } catch (err) {
       setError('Error al cargar los pedidos');
     } finally {
@@ -124,8 +149,19 @@ export const Profile = () => {
         {orders.length === 0 ? (
           <p>No tienes pedidos realizados</p>
         ) : (
-          orders.map((order) => (
-            <div key={order.IdOrder} className="order-card">
+          orders.map((order) => 
+            (
+            <div
+  key={order.IdOrder}
+  className={`order-card ${
+    order.status === 'pending'
+      ? 'pending'
+      : order.status === 'completed'
+      ? 'completed'
+      : order.status === 'cancelled'
+      ? 'cancelled'
+      : ''
+  }`}>
               <div className="order-header">
                 <span>Pedido #{order.IdOrder}</span>
                 <span className="order-date">{new Date(order.date).toLocaleDateString()}</span>
@@ -154,10 +190,24 @@ export const Profile = () => {
                   Cancelar orden
                 </button>
               )}
+              {order.status !== 'pending' && (
+                <button className='btn-cancelar' onClick={() => setShowDeleteConfirm(order.IdOrder)}>
+                  Eliminar orden
+                </button>
+              )}
             </div>
           ))
         )}
+      {showDeleteConfirm && (
+        <div className="delete-confirm">
+          <p>¿Estás seguro de eliminar esta orden?</p>
+          <button onClick={() => {eliminarOrden(showDeleteConfirm); setShowDeleteConfirm(null)}}>Eliminar</button>
+          <button onClick={() => setShowDeleteConfirm(null)}>Cancelar</button>
+        </div>
+      )}  
       </div>
     </div>
   );
 };
+
+

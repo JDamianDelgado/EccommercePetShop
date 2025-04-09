@@ -13,7 +13,6 @@ export const Compra = () => {
   const { orderDetails = [], totalPrice = 0, carrito } = location.state || {};
 
   const restart=async()=>{
-    console.log('Carrito: COMPRA=> ', carrito);
     try {
       
       await axiosInstance.delete(`/orders/remover/${carrito}`);

@@ -52,6 +52,21 @@
   overflow: hidden;
 }
 
+.order-card.pending {
+  background-color: #fff3cd; 
+  border: 1px solid #ffc107;
+}
+
+.order-card.completed {
+  background-color: #d4edda; 
+  border: 1px solid #28a745;
+}
+
+.order-card.cancelled {
+  background-color: #f8d7da; 
+  border: 1px solid #dc3545;
+}
+
 .order-header {
   background: #f7fafc;
   padding: 1rem;
@@ -274,3 +289,43 @@
   background-color: #c62828;
 }
 
+.delete-confirm {
+  background-color: #fffefd;
+  opacity: 90%;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.1);
+  width: 30vw;
+  border: 1px solid #e2e8f0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.delete-confirm button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  margin-left: 1rem;
+  background-color: #f18c2d;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-confirm button:hover {
+  background-color: #d2d3d4;
+  color: white;
+}
+
+.delete-confirm button:first-child {
+  background-color: #e53935;
+  color: white;
+}
+
+.delete-confirm button:first-child:hover {
+  background-color: #c62828;
+}

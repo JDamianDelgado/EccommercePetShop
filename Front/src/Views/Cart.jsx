@@ -56,14 +56,12 @@ export const Cart = () => {
   };
 
   const updateQuantity = async (idCartItem, quantity) => {
-    console.log('Actualizando cantidad para el producto:', idCartItem, 'Cantidad:', quantity);
     if (quantity < 1) {
       await removeFromCart(idCartItem);
       return;
     }
 
     try {
-      console.log('Actualizando cantidad para el producto:', idCartItem, 'Cantidad:', quantity);
       await axiosInstance.patch(`/orders/cart/${user.IdUser}/${idCartItem}`, {
         quantity,       
       });

@@ -31,7 +31,6 @@ export const UserProvider = ({ children }) => {
   const loginUser = async (data) => {
     try {
       const response = await axiosInstance.post("/auth/signin", data);
-      console.log(response.data);
       if (response) {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("user", JSON.stringify(response.data.user)); 

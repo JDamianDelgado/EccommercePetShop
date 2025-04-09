@@ -34,7 +34,6 @@ export const Productos = () => {
       navigate('/login');
       return;
     }
-console.log('Agregando producto al carrito:', productId);
     try {
       await axiosInstance.put(`/orders/cart/${user.IdUser}/addCart`, { productId, quantity: 1 });
       toast.success('Producto agregado al carrito');
