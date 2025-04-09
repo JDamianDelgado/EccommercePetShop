@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axiosInstance from "../../config/axios";
-import "../Css/Pedidos.css";
+import "src/Styles/Admin/Pedidos-Adm.css"
 
 export const PedidosAdmin = () => {
   const [orders, setOrders] = useState([]);
@@ -114,7 +114,7 @@ export const PedidosAdmin = () => {
   <p>Fecha: {new Date(detailOrder.date).toLocaleDateString()}</p>
   <p>Country: {detailOrder.user.country}</p>
   <p>City: {detailOrder.user.city}</p>
-  <p>Direccion: {detailOrder.user.adress}</p>
+  <p>Direccion: {detailOrder.user.address}</p>
   <p>Estado: {detailOrder.status}</p>
   <p>Email: {detailOrder.user.email}</p>
 </div>

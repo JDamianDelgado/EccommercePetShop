@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import axiosInstance from "../../config/axios";
 import { useEffect, useState } from "react";
-import '../Css/Productos-Adm.css';
+import "src/Styles/Admin/Productos-Adm.css"
 
 export const ProductosAdmin = () => {
   const [productItems, setProductItems] = useState([]);

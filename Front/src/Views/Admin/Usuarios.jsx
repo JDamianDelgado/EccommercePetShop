@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import axiosInstance from "../../config/axios";
 import { useEffect, useState } from "react";
-import '../Css/Usuarios-Adm.css';
+import "src/Styles/Admin/Usuarios-Adm.css"
 
 export const Usuarios = () => {
   const [userItems, setUserItems] = useState([]);
