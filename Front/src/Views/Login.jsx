@@ -1,18 +1,16 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../config/axios';
-import { ToastContainer, toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 import '../Styles/Auth.css';
-import 'react-toastify/dist/ReactToastify.css';
 import { UserContext } from '../Context/ReactContext';
-import { useContext } from 'react';
-
 
 export const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+
   const navigate = useNavigate();
   const { loginUser } = useContext(UserContext);
 
@@ -28,16 +26,31 @@ export const Login = () => {
     try {
       const loginSuccess = await loginUser(formData);
       if (loginSuccess) {
-        toast.success("Inicio de sesión exitoso");
+        Swal.fire({
+          icon: 'success',
+          title: 'Bienvenido!',
+          text: 'Inicio de sesión exitoso',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+
         setTimeout(() => {
           navigate("/profile");
-        }, 1500);
+        }, 2000);
       } else {
-        toast.error("Credenciales incorrectas");
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Credenciales incorrectas',
+        });
       }
     } catch (error) {
       console.error("Error en el login:", error.response?.data?.message || error);
-      toast.error("No se pudo iniciar sesión");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No se pudo iniciar sesión',
+      });
     }
   };
 

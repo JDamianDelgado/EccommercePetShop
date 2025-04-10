@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../config/axios";
+import Swal from "sweetalert2";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const UserContext = createContext({
@@ -49,6 +50,13 @@ export const UserProvider = ({ children }) => {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     navigate('/');
+    Swal.fire({
+      icon: 'info',
+      title: 'Cerraste sesión',
+      text: 'Hasta la próxima',
+      showConfirmButton: false,
+      timer: 2000,
+    });
   };
 
   return (

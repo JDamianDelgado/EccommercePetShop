@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../config/axios';
 import '../Styles/Auth.css';
+import Swal from 'sweetalert2';
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ export const Register = () => {
     name: '',
     birthday: '',
     address: '',
+    numberDirect: '',
+    zipCode: '',
     country: '',
     city: '',
     phone: '',
@@ -44,8 +47,20 @@ export const Register = () => {
         : null;
   
       await axiosInstance.post('/auth/signup', registerData);
+      Swal.fire({
+        icon: 'success',
+        title: 'Bienvenido!',
+        text: 'Registro exitoso',
+        showConfirmButton: false,
+        timer: 2000,
+      }); 
       navigate('/login');
     } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error al registrarse',
+      });
       setError(err.response?.data?.message || 'Error al registrarse');
     }
   };
@@ -101,15 +116,48 @@ export const Register = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="country">País</label>
+            <label htmlFor="numberDirect">Número de Casa</label>
             <input
               type="text"
+              id="numberDirect"
+              name="numberDirect"
+              value={formData.numberDirect}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="zipCode">Código Postal</label>
+            <input
+              type="text"
+              id="zipCode"
+              name="zipCode"
+              value={formData.zipCode}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group-pais">
+            <label htmlFor="country">País</label>
+            <select
               id="country"
               name="country"
               value={formData.country}
               onChange={handleChange}
               required
-            />
+            >
+              <option value="">Selecciona tu país</option>
+              <option value="Argentina">Argentina</option>
+              <option value="Chile">Chile</option>
+              <option value="Uruguay">Uruguay</option>
+              <option value="Paraguay">Paraguay</option>
+              <option value="Colombia">Colombia</option>
+              <option value="México">México</option>
+              <option value="Perú">Perú</option>
+              <option value="España">España</option>
+              <option value="Estados Unidos">Estados Unidos</option>
+              <option value="Brasil">Brasil</option>
+            </select>
           </div>
           <div className="form-group">
             <label htmlFor="city">Ciudad</label>

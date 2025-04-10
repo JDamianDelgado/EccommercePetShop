@@ -1,7 +1,7 @@
-import { toast } from "react-toastify";
 import axiosInstance from "../../config/axios";
 import { useEffect, useState } from "react";
 import "src/Styles/Admin/Usuarios-Adm.css"
+import Swal from "sweetalert2";
 
 export const Usuarios = () => {
   const [userItems, setUserItems] = useState([]);
@@ -14,10 +14,20 @@ export const Usuarios = () => {
     try {
       const response = await axiosInstance.get("user");
       setUserItems(response.data);
-      toast.success("Usuarios cargados correctamente");
+      Swal.fire({
+        icon: 'success',
+        title: 'Usuarios cargados correctamente',
+        showConfirmButton: false,
+        timer: 2000,
+      })
     } catch (error) {
       console.error("Error al cargar los usuarios", error);
-      toast.error("Error al cargar los usuarios");
+      Swal.fire({
+        icon: 'error',
+        text: 'Error al cargar los usuarios',
+        showConfirmButton: false,
+        timer: 2000,
+      })
     }
   };
 
@@ -45,17 +55,30 @@ export const Usuarios = () => {
       if (Object.keys(changedFields).length > 0) {
         await axiosInstance.put(`user/${userId}`, changedFields);
         setUserItems(userItems.map(user => user.IdUser === userId ? {...editableUser} : user));
-        toast.success("Usuario actualizado correctamente");
-      } else {
-        toast.info("No se detectaron cambios");
-      }
+        Swal.fire({ icon: 'success',
+        title: 'Usuario',
+        text: 'actualizado correctamente',
+        showConfirmButton: false,
+       timer: 2000, })} else {
+        Swal.fire({
+         icon:'info',
+          title: 'No se detectaron cambios',
+         text: '',
+         showConfirmButton: false,
+          timer: 2000,
+})      }
 
       setEditMode(false);
       setEditableUser(null);
       setOriginalUser(null);
     } catch (error) {
       console.error("Error al actualizar el usuario", error);
-      toast.error("Error al actualizar el usuario");
+      Swal.fire({
+        icon:'error',
+        text: 'Error al actualizar el usuario',
+        showConfirmButton: false,
+        timer: 2000,
+      })
     }
   };
 
@@ -85,11 +108,19 @@ export const Usuarios = () => {
       await axiosInstance.delete(`/user/${userId}`);
       setUserItems(userItems.filter(user => user.IdUser !== userId));
       setShowDeleteConfirm(null);
-      toast.success("Usuario eliminado correctamente");
-    } catch (error) {
+      Swal.fire({
+        icon:'success',
+        title: 'Usuario eliminado',
+        showConfirmButton: false,
+        timer: 2000,
+      })    } catch (error) {
       console.error("Error al eliminar el usuario", error);
-      toast.error("Error al eliminar el usuario");
-    }
+      Swal.fire({
+        icon:'error',
+        text: 'Error al eliminar el usuario',
+        showConfirmButton: false,
+        timer: 2000,
+      })    }
   };
 
   return (
@@ -109,7 +140,7 @@ export const Usuarios = () => {
                 <div className="delete-confirm">
                   <p className="delete-message">¿Estás seguro de que deseas eliminar a este usuario?</p>
                   <div className="delete-actions">
-                    <button onClick={() => deleteUser(user.IdUser)} className="confirm-delete-btn">Confirmar eliminación</button>
+                    <button onClick={() => deleteUser(user.IdUser)} className="confirm-delete-btn">Confirmar</button>
                     <button onClick={cancelDelete} className="cancel-delete-btn">Cancelar</button>
                   </div>
                 </div>
