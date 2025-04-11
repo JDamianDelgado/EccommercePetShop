@@ -67,7 +67,7 @@ export const Register = () => {
 
   return (
     <div className="auth-container">
-      <div className="auth-card">
+      <div className="auth-card-form">
         <h2>Registro</h2>
         {error && <div className="auth-error">{error}</div>}
         <form onSubmit={handleSubmit} className="auth-form">

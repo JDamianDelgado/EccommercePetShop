@@ -1,9 +1,13 @@
 .navbar {
   background-color: #d1942b;
   padding: 1rem 2rem;
+  width: 85vw;
+  margin: 0 auto;
+  margin-top:1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 18px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
@@ -56,7 +60,7 @@
 }
 
 .nav-link:hover {
-  background-color: #2d3748;
+  background-color: #5d89d6;
   color: white;
 }
 

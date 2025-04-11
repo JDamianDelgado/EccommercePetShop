@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="app">
       <NavBar></NavBar>
-      <main className="main-content">
+      <main className="main-content"  style={{ backgroundColor: '	#D97B48' }}>
         <Routes>
           <Route path="/admin/pedidos" element={<PedidosAdmin />} />
           <Route path="/admin/products" element={<ProductosAdmin />} />
@@ -30,7 +30,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile /> } />
         </Routes>
       </main>
       <Footer />

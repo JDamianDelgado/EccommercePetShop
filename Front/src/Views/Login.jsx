@@ -56,6 +56,7 @@ export const Login = () => {
 
   return (
     <div className="auth-container">
+      <img  className="auth-image-top" src="https://static.vecteezy.com/system/resources/previews/057/174/210/non_2x/curious-cat-peeking-over-a-transparent-table-against-a-soft-transparent-background-in-a-cheerful-and-playful-atmosphere-cat-peeking-over-transparent-top-table-transparent-background-free-png.png" alt="" />
       <div className="auth-card">
         <h2>Iniciar Sesión</h2>
         <form onSubmit={handleSubmit} className="auth-form">

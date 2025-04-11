@@ -1,20 +1,26 @@
 :root{
   --color-primary: #FECB70;
-  --color-secondary: #d1942b;
+  --color-secondary: 		#D97B48;
   --color-tertiary: #ffaa17;
+}
+
+.main-content{
+  background-color: black;
 }
 
 .home-container {
   border-radius: 25px;
   min-height: 100vh;
   background-color: var(--color-secondary);
+  width: 85vw;
+  margin: 0 auto;
 }
 
 .carousel-container {
 top: 2rem;
   position: relative;
   width: 80vw;
-  height: 40vh;
+  height: 50vh;
   overflow: hidden;
   margin: 0 auto;
   margin-bottom: 2rem;
@@ -32,6 +38,7 @@ top: 2rem;
 .carousel-slide {
   min-width: 100%;
   height: 100%;
+ margin: 0 auto;
 }
 
 .carousel-slide img {
@@ -95,9 +102,10 @@ top: 2rem;
 }
 
 .boxText {
- 
   background-color: var(--color-secondary);
   border-radius: 8px;
+  padding-bottom: 2rem;
+  
 }
 
 .title {
@@ -112,7 +120,9 @@ top: 2rem;
   width: 92vw;
   margin: 0 auto;
   padding-top: 4rem;
-  justify-content: center;
+  font-family: 'Lucida Sans', 'LucidaSans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  width: 70vw;
+  margin: 0 auto;
 }
 
 .BoxPresentationText  {
@@ -121,33 +131,27 @@ top: 2rem;
   background-color: var(--color-primary);
   border-radius: 18px;
   padding: 3rem;
-  opacity: 80%;
-  color: rgb(99, 52, 8);
-  font-weight: bold;
-  font-size: 1.1rem;
   text-align: center;
+  color: rgb(99, 52, 8);
+  font-size: 1.1rem;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+width: 70vw;
 }
 
 .BoxPresentationText img {
-  width: 80%;
-  height: 80%;
-  object-fit: cover;
-  border-radius: 58px;
-  z-index: 1;
+  width: 50vw;
+  text-align: center; 
   margin: 0 auto;
-  position: relative;
 }
 
 .boxServices {
-  width: 92vw;
-  margin: 0 auto;
+  width: 75vw;
   text-align: center;
-  align-items: center;
+  margin: 0 auto;
   background-color: var(--color-primary);
   border-radius: 8px;
-  margin: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .boxServices .title{
@@ -170,20 +174,18 @@ top: 2rem;
 
 .boxList {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
+  gap: 1.8rem;
+  width: 70vw;
+  margin: 0 auto;
   padding-bottom: 3rem;
-  padding-top: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
 
+}
 
 .boxListService {
   align-items: center;
   text-align: center;
-  box-shadow: 5px 15px 16px rgba(0, 0, 0, 0.1);
-  background-color: var(--color-primary);
+  box-shadow: 10px 18px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f1be65bb;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -191,17 +193,18 @@ top: 2rem;
   padding: 1rem;
   border-radius: 8px;
   padding-bottom: 5rem;
+ 
 }
 
 
 .boxListService:hover{
   cursor: pointer;
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
   color: white;
   transition: 0.3s;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 .boxListService img {
   width: 13vw;
