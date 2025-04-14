@@ -32,7 +32,7 @@
   }
   
   .order-card:hover {
-    background-color: #c0c0c0;
+    transform: scale(1.02)
   }
 
   .order-card.completed {

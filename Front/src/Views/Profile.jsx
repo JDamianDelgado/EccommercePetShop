@@ -163,7 +163,7 @@ export const Profile = () => {
       : ''
   }`}>
               <div className="order-header">
-                <span>Pedido #{order.IdOrder}</span>
+                <span>Pedido N° : {order.IdOrder}</span>
                 <span className="order-date">{new Date(order.date).toLocaleDateString()}</span>
                 <span className={`order-status status-${order.status.toLowerCase()}`}>{order.status}</span>
               </div>
@@ -171,7 +171,7 @@ export const Profile = () => {
               <div className="order-products">
                 {order.orderDetail.products.map((product) => (
                   <div key={product.IdProduct} className="order-product">
-                    <img src={product.image} alt={product.name} />
+                    <img className='order-product-img' src={product.image} alt={product.name} />
                     <div className="product-details">
                       <p>{product.name}</p>
                       <p>Cantidad: {product.quantity}</p>

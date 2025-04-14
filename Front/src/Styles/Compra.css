@@ -1,0 +1,82 @@
+:root{
+    --color-primary: #FECB70;
+    --color-secondary: 		#D97B48;
+    --color-tertiary: #ffaa17;
+  }
+
+.compra-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 45vw;
+    margin: 0 auto;
+    border-radius: 10%;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 10px 1px 20px rgba(235, 230, 230, 0.1);
+  }
+  
+  .compra-titulo {
+    text-align: center;
+    color: rgb(0, 0, 0);
+width: 40vw;
+height: 5vh;
+padding: 0.5rem;  }
+  
+  .compra-subtitulo {
+    font-size: 22px;
+    margin-top: 10px;
+    border-bottom: solid 1px black;
+  }
+  
+  .detalles-compra {
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 20px;
+    width: 30vw;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .detalles-compra ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .detalles-compra li {
+    padding: 0.3rem;
+    margin: 10px 0;
+    font-size: 19px;
+  }
+  
+  .total-compra {
+    margin-top: 10px;
+    font-size: 28px;
+    color: rgb(3, 3, 3);
+    margin-top: 2rem;
+    width: 20vw;
+text-align: center;
+  }
+  
+  .boton-regresar {
+    font-size: 25px;
+    background-color: rgb(189, 65, 65);
+    color: white;
+    padding: 1rem;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 25vh;
+  }
+  
+  .aviso {
+    color: #555;
+background-color: rgb(189, 65, 65);   ;
+color: white;
+width: 100%;
+text-align: center  ;
+padding: 0.5rem;
+margin-top: 2rem;
+border-radius: 20px;}
+  

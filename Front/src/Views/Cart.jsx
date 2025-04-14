@@ -134,11 +134,14 @@ export const Cart = () => {
       <div className="cart-items">
         {cart.cartItem.map((item) => (
           <div key={item.idCartItem} className="cart-item">
+            <div className='cart-item-image-container'>
+
             <img
               className="cart-item-image"
               src={item.product.image}
               alt={item.product.name}
-            />
+              />
+              </div>
             <div className="cart-item-details">
               <h3>{item.product.name}</h3>
               <p className="cart-item-price">

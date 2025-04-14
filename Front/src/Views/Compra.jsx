@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axiosInstance from '../config/axios';
+import '../Styles/Compra.css';
 
 
 export const Compra = () => {
@@ -12,9 +13,8 @@ export const Compra = () => {
 
   const { orderDetails = [], totalPrice = 0, carrito } = location.state || {};
 
-  const restart=async()=>{
+  const restart = async () => {
     try {
-      
       await axiosInstance.delete(`/orders/remover/${carrito}`);
       navigate('/');
       toast.success('Carrito eliminado');
@@ -25,33 +25,34 @@ export const Compra = () => {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }} >
-      <h1 style={{ textAlign: "center", color: "red" }}>Compra Realizada con Éxito</h1>
+    <div className="compra-container">
+      <h1 className="compra-titulo">Compra Realizada con Éxito</h1>
 
-      <h2 >Detalles de la Compra</h2>
-      <div >
+      <h2 className="compra-subtitulo">Detalle de la Compra</h2>
+      <div className="detalles-compra">
         {orderDetails.length > 0 ? (
-          <ul >
+          <ul>
             {orderDetails.map((item, index) => (
-              <li style={{ margin: "10px", fontSize: "18px" }} key={index} >
+              <li key={index}>
                 <strong>{item.name}</strong> - {item.quantity} x ${item.price.toFixed(2)} ={" "}
-                <span >${item.total.toFixed(2)}</span>
+                <span>${item.total.toFixed(2)}</span>
               </li>
             ))}
           </ul>
         ) : (
-          <p >No hay productos en la orden.</p>
+          <p>No hay productos en la orden.</p>
         )}
       </div>
 
-      <h3 style={{ marginTop: "10px", fontSize: "28px", color:"green"}}>
+      <h3 className="total-compra">
         Total: <span>${totalPrice}</span>
       </h3>
 
+      <button onClick={restart} className="boton-regresar">
+        Regresar al Inicio
+      </button>
 
-<button onClick={() => restart()} style={{ margin: "75px", fontSize: "25px" , backgroundColor: "white", color: "Red", border: "none", cursor: "pointer"}}>Regresar al Inicio
-</button>
-      <p style={{ fontStyle: "italic", color: "#555", marginTop: "150px" }}>
+      <p className="aviso">
         ⚠️ Recordemos que al ser una página de prueba, no se pueden realizar transacciones reales.
       </p>
     </div>

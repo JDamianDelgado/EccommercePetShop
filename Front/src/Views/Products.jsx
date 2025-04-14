@@ -51,7 +51,7 @@ export const Productos = () => {
       <h1>Productos</h1>
       <div className="products-grid">
         {productos.map((producto) => (
-          <div key={producto.IdProduct} className="product-card">
+          <div key={producto.IdProduct} className="product-cards">
             <img src={producto.image} alt={producto.name} className="product-image" />
             <h3>{producto.name}</h3>
             <p className="product-price">${producto.price}</p>
