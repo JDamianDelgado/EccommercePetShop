@@ -15,11 +15,11 @@ import { Usuarios } from './Views/Admin/Usuarios';
 import { ProductosAdmin } from './Views/Admin/Productos';
 import { PedidosAdmin } from './Views/Admin/Pedidos';
 
-function App() {
+function App() {``
   return (
     <div className="app">
       <NavBar></NavBar>
-      <main className="main-content"  style={{ backgroundColor: '	#D97B48' }}>
+      <main className="main-content"  style={{ backgroundColor: 'rgb(247, 243, 241)' }}>
         <Routes>
           <Route path="/admin/pedidos" element={<PedidosAdmin />} />
           <Route path="/admin/products" element={<ProductosAdmin />} />

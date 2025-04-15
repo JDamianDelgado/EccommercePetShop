@@ -1,17 +1,16 @@
 :root{
   --color-primary: #FECB70;
-  --color-secondary: 		#D97B48;
+  --color-secondary: 		#rgb(247, 243, 241);
   --color-tertiary: #ffaa17;
 }
 
 .main-content{
-  background-color: black;
+  background-color: rgb(247, 243, 241);
 }
 
 .home-container {
   border-radius: 25px;
   min-height: 100vh;
-  background-color: var(--color-secondary);
   width: 85vw;
   margin: 0 auto;
 }
@@ -19,12 +18,12 @@
 .carousel-container {
 top: 2rem;
   position: relative;
-  width: 80vw;
+  width: 90vw;
   height: 50vh;
   overflow: hidden;
   margin: 0 auto;
   margin-bottom: 2rem;
-  background-color: var(--color-primary);
+  background-color: white ;
   border-radius: 18px;
   box-shadow: 10px 1px 20px rgba(255, 255, 255, 0.1);
 }
@@ -52,7 +51,7 @@ top: 2rem;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.5);
-  color: rgb(235, 131, 13);
+  color: white;
   border: none;
   width: 40px;
   height: 40px;
@@ -102,7 +101,7 @@ top: 2rem;
 }
 
 .boxText {
-  background-color: var(--color-secondary);
+  background-color: rgb(247, 243, 241);
   border-radius: 8px;
   padding-bottom: 2rem;
   
@@ -128,7 +127,8 @@ top: 2rem;
 .BoxPresentationText  {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-primary);
+  background-color: white;
+  border: 1px solid #f0933c;
   border-radius: 18px;
   padding: 3rem;
   text-align: center;
@@ -174,18 +174,24 @@ width: 70vw;
 
 .boxList {
   display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
   gap: 1.8rem;
   width: 70vw;
   margin: 0 auto;
   padding-bottom: 3rem;
+  background-color: var(--color-primary);
 
 }
 
 .boxListService {
+  flex: 1 1 250px;
+  max-width: 100%;
+  box-sizing: border-box;
   align-items: center;
   text-align: center;
-  box-shadow: 10px 18px 4px rgba(0, 0, 0, 0.1);
-  background-color: #f1be65bb;
+  box-shadow: 10px 15px 3px rgba(2, 1, 1, 0.1);
+  background-color: rgb(247, 243, 241);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -199,12 +205,12 @@ width: 70vw;
 
 .boxListService:hover{
   cursor: pointer;
-  background-color: var(--color-secondary);
+  background-color: #e6a760;
   color: white;
   transition: 0.3s;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transform: scale(1.1);
+  transform: scale(1.0);
 }
 .boxListService img {
   width: 13vw;

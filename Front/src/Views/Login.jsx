@@ -93,6 +93,7 @@ export const Login = () => {
           </span>
         </p>
       </div>
+      {/* <img src="https://png.pngtree.com/png-vector/20240722/ourmid/pngtree-britiish-shorthair-cat-peeking-out-behind-wall-png-image_13030868.png" alt="" className='auth-image-left' /> */}
     </div>
   );
 };
