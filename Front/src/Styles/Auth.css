@@ -27,14 +27,14 @@
   position: absolute;
   transform: translate(-50%, -40%);
   clip-path: inset(28% 22% 32% 22%);
-  transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.5s;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), z-index 5.5s;
   left: 50%;
   top: 18%;
 
 }
 
 .auth-image-top:hover {
-  transform: translate(-50%, -22%);
+  transform: translate(-50%, -8%);
  z-index: 0;
 
 }

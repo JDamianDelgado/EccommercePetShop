@@ -25,7 +25,7 @@ height: 5vh;
 padding: 0.5rem;  }
   
   .compra-subtitulo {
-    font-size: 22px;
+    font-size: 20px;
     margin-top: 10px;
     border-bottom: solid 1px black;
   }
@@ -47,12 +47,12 @@ padding: 0.5rem;  }
   .detalles-compra li {
     padding: 0.3rem;
     margin: 10px 0;
-    font-size: 19px;
+    font-size: 17px;
   }
   
   .total-compra {
     margin-top: 10px;
-    font-size: 28px;
+    font-size: 20px;
     color: rgb(3, 3, 3);
     margin-top: 2rem;
     width: 20vw;
@@ -61,7 +61,7 @@ text-align: center;
   
   .boton-regresar {
     font-size: 25px;
-    background-color: rgb(189, 65, 65);
+    background-color: rgb(230, 167, 86);
     color: white;
     padding: 1rem;
     border-radius: 20px;
@@ -72,7 +72,7 @@ text-align: center;
   
   .aviso {
     color: #555;
-background-color: rgb(189, 65, 65);   ;
+background-color: rgb(230, 167, 86);
 color: white;
 width: 100%;
 text-align: center  ;

@@ -35,7 +35,7 @@ export const Login = () => {
         });
 
         setTimeout(() => {
-          navigate("/profile");
+          navigate("/");
         }, 2000);
       } else {
         Swal.fire({

@@ -16,7 +16,7 @@
 
 .cart-container h2 {
   text-align: center;
-  color: white;
+  color: rgb(26, 25, 25);
   margin-bottom: 2rem;
 }
 
@@ -39,9 +39,8 @@
 }
 
 .cart-item-image {
-  
-  height: auto;
-  width: 5vw;
+  height: 8vh;
+  width: 8vh;
   border-radius: 40%;
   display: flex;
   margin: 0 auto;
