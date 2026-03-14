@@ -1,86 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
+
 :root {
-    /* Variables para colores */
-    --primary-color: #333;
-    --secondary-color: #f8f9fa;
-    --accent-color: #e21818;
-    --text-color: #333;
-    --background-color: #ffffff;
-  
-    /* Variables para espaciado */
-    --spacing-xs: 0.25rem;
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 1.5rem;
-    --spacing-xl: 2rem;
-  
-    /* Variables para breakpoints */
-    --mobile-width: 480px;
-    --tablet-width: 768px;
-    --desktop-width: 1024px;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
+  /* Palette (se mantienen los colores base del sitio) */
+  --primary-color: #d1942b;
+  --primary-strong: #bd7415;
+  --primary-soft: #f0c27b;
+  --accent-color: #f56565;
+  --text-color: #3b2a1a;
+  --muted-color: #6b5b4c;
+  --background-color: rgb(247, 243, 241);
+  --surface-color: #fff9f1;
+
+  /* Typography */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Manrope", "Segoe UI", sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Breakpoints */
+  --mobile-width: 480px;
+  --tablet-width: 768px;
+  --desktop-width: 1024px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, rgba(221, 148, 52, 0.18), transparent 55%),
+    radial-gradient(900px 500px at 110% 10%, rgba(209, 148, 43, 0.15), transparent 55%);
+  background-attachment: fixed;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+@media (max-width: 768px) {
   html {
-    font-size: 16px;
-    /* Responsive font-size base */
-    @media (max-width: 768px) {
-      font-size: 14px;
-    }
+    font-size: 14px;
   }
-  
-  body {
-  background-color: rgb(247, 243, 241);
-  }
-  
-  #root {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Contenedor responsive */
+
   .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-sm);
   }
-  
-  /* Media queries generales */
-  @media (max-width: 768px) {
-    .container {
-      padding: 0 var(--spacing-sm);
-    }
-  }
-  
-  /* Utilidades para espaciado responsive */
+}
+
+.margin-responsive {
+  margin: var(--spacing-md);
+}
+
+.padding-responsive {
+  padding: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
   .margin-responsive {
-    margin: var(--spacing-md);
+    margin: var(--spacing-sm);
   }
-  
+
   .padding-responsive {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
   }
-  
-  @media (max-width: 768px) {
-    .margin-responsive {
-      margin: var(--spacing-sm);
-    }
-  
-    .padding-responsive {
-      padding: var(--spacing-sm);
-    }
-  }
-  
-  /* Utilidades para imágenes responsive */
-  .img-responsive {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-  
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

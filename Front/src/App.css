@@ -6,13 +6,13 @@
 
 .main-content {
   flex: 1;
-  padding: 2rem;
-  background-color: #f7fafc;
+  padding: 2.5rem 0 3rem;
+  background-color: transparent;
 }
 
 .Toastify__toast {
-  border-radius: 8px;
-  font-family: system-ui, -apple-system, sans-serif;
+  border-radius: 12px;
+  font-family: var(--font-body);
 }
 
 .Toastify__toast--success {
